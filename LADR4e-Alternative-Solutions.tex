@@ -1,0 +1,86 @@
+\documentclass[11pt,a4paper]{article}
+
+\usepackage{amsmath, amssymb, amsthm}
+\usepackage[margin=1in]{geometry}
+\usepackage{hyperref}
+
+\hypersetup{
+    colorlinks=true,
+    linkcolor=blue,
+    urlcolor=blue
+}
+
+\newtheorem{exercise}{Exercise}
+\newtheorem*{solution}{Solution}
+
+\title{\textbf{LADR 4e --- Alternative Solutions}}
+\author{vecljox}
+\date{}
+
+\begin{document}
+
+\maketitle
+
+\noindent
+This document collects alternative proofs for selected exercises in
+\textit{Linear Algebra Done Right} (4th edition) by Sheldon Axler.
+Each solution here differs from the official or standard approach
+and aims to be more direct or illuminating.
+
+\bigskip
+\noindent
+Licensed under CC BY-NC-SA 4.0.
+
+\bigskip
+\hrule
+\vspace{1em}
+
+\section*{Chapter 6.B}
+
+\begin{exercise}[6.B.9]
+Suppose $e_1, \dots, e_m$ is the result of applying the Gram--Schmidt
+procedure to a linearly independent list $v_1, \dots, v_m \in V$.
+Prove that $\langle v_k, e_k \rangle > 0$ for each $k = 1, \dots, m$.
+\end{exercise}
+
+\begin{solution}
+By the Gram--Schmidt procedure, $e_k = \dfrac{f_k}{\|f_k\|}$, so
+\[
+    \langle v_k, e_k \rangle
+    = \frac{\langle v_k, f_k \rangle}{\|f_k\|}.
+\]
+It suffices to show that $\langle v_k, f_k \rangle > 0$.
+
+Substituting the definition
+\[
+    f_k = v_k - \sum_{i=1}^{k-1}
+    \frac{\langle v_k, f_i \rangle}{\|f_i\|^2}\, f_i
+\]
+and using $f_i = \|f_i\|\, e_i$, we obtain
+\[
+    \langle v_k, f_k \rangle
+    = \|v_k\|^2 - \sum_{i=1}^{k-1} |\langle v_k, e_i \rangle|^2.
+\]
+By Bessel's inequality,
+\[
+    \sum_{i=1}^{k-1} |\langle v_k, e_i \rangle|^2
+    \leq \|v_k\|^2,
+\]
+so $\langle v_k, f_k \rangle \geq 0$.
+
+If equality holds, then
+$\|v_k\|^2 = \sum_{i=1}^{k-1} |\langle v_k, e_i \rangle|^2$.
+By Exercise~6.B.3, this implies
+$v_k \in \operatorname{span}(e_1, \dots, e_{k-1})
+= \operatorname{span}(v_1, \dots, v_{k-1})$,
+contradicting the linear independence of $v_1, \dots, v_m$.
+
+Therefore $\langle v_k, f_k \rangle > 0$, and hence
+\[
+    \langle v_k, e_k \rangle
+    = \frac{\langle v_k, f_k \rangle}{\|f_k\|} > 0.
+    \qedhere
+\]
+\end{solution}
+
+\end{document}

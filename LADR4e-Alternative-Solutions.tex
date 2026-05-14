@@ -83,4 +83,51 @@ Therefore $\langle v_k, f_k \rangle > 0$, and hence
 \]
 \end{solution}
 
+\section*{Chapter 7.F}
+
+\begin{exercise}[7.F.3]
+Suppose $T \in \mathcal{L}(V, W)$ and $v \in V$. Prove that
+\[
+    \|Tv\| = \|T\|\,\|v\|
+    \quad \Longleftrightarrow \quad
+    T^*Tv = \|T\|^2 v.
+\]
+\end{exercise}
+
+\begin{solution}
+($\Leftarrow$) Suppose $T^*Tv = \|T\|^2 v$. Taking the inner product
+of both sides with $v$ gives
+\[
+    \langle T^*Tv, v \rangle = \langle \|T\|^2 v, v \rangle.
+\]
+The left-hand side equals $\langle Tv, Tv \rangle = \|Tv\|^2$, and the
+right-hand side equals $\|T\|^2 \|v\|^2$. Hence
+$\|Tv\|^2 = \|T\|^2 \|v\|^2$, and taking square roots yields
+$\|Tv\| = \|T\|\,\|v\|$.
+
+\medskip
+($\Rightarrow$) Suppose $\|Tv\| = \|T\|\,\|v\|$. Let
+$S = \|T\|^2 I - T^*T$. We first show that $S$ is a positive operator.
+For each $u \in V$,
+\[
+    \langle Su, u \rangle
+    = \|T\|^2 \|u\|^2 - \langle T^*Tu, u \rangle
+    = \|T\|^2 \|u\|^2 - \|Tu\|^2
+    \geq 0,
+\]
+where the inequality follows from $\|Tu\| \leq \|T\|\,\|u\|$. Since
+$T^*T$ and $I$ are self-adjoint, so is $S$; thus $S$ is positive.
+Next, using the hypothesis $\|Tv\| = \|T\|\,\|v\|$,
+\[
+    \langle Sv, v \rangle
+    = \|T\|^2 \|v\|^2 - \|Tv\|^2
+    = 0.
+\]
+By 7.43, a positive operator $S$ with $\langle Sv, v \rangle = 0$
+satisfies $Sv = 0$. Therefore $\|T\|^2 v - T^*Tv = 0$, that is,
+\[
+    T^*Tv = \|T\|^2 v. \qedhere
+\]
+\end{solution}
+
 \end{document}

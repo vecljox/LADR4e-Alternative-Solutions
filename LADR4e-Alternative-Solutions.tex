@@ -10,7 +10,7 @@
     urlcolor=blue
 }
 
-\newtheorem{exercise}{Exercise}
+\newtheorem*{exercise}{Exercise}
 \newtheorem*{solution}{Solution}
 
 \title{\textbf{LADR 4e --- Alternative Solutions}}
@@ -128,6 +128,57 @@ satisfies $Sv = 0$. Therefore $\|T\|^2 v - T^*Tv = 0$, that is,
 \[
     T^*Tv = \|T\|^2 v. \qedhere
 \]
+\end{solution}
+
+\begin{exercise}[7.F.8]
+\begin{enumerate}
+    \item[(a)] Prove that if $T \in \mathcal{L}(V)$ and $\|I - T\| < 1$,
+    then $T$ is invertible.
+    \item[(b)] Suppose that $S \in \mathcal{L}(V)$ is invertible. Prove
+    that if $T \in \mathcal{L}(V)$ and
+    \[
+        \|S - T\| < \frac{1}{\|S^{-1}\|},
+    \]
+    then $T$ is invertible.
+\end{enumerate}
+\end{exercise}
+
+\begin{solution}
+We prove (b) directly; part (a) follows as the special case $S = I$.
+
+Since $V$ is finite-dimensional, it suffices to show that $T$ is
+injective, i.e., $Tv \neq 0$ whenever $v \neq 0$.
+
+We first observe that $S$ admits a uniform lower bound on its stretching:
+for every $v \in V$,
+\[
+    \|v\| = \|S^{-1} S v\| \leq \|S^{-1}\|\, \|Sv\|,
+\]
+which rearranges to
+\[
+    \|Sv\| \geq \frac{1}{\|S^{-1}\|}\, \|v\|. \tag{$\ast$}
+\]
+
+Now let $v \in V$ with $v \neq 0$. Writing $T = S - (S - T)$ gives
+\[
+    Tv = Sv - (S - T)v.
+\]
+By the reverse triangle inequality,
+\[
+    \|Tv\| \geq \|Sv\| - \|(S - T)v\|.
+\]
+Applying ($\ast$) to the first term and $\|(S - T)v\| \leq \|S - T\|\,\|v\|$
+to the second,
+\[
+    \|Tv\|
+    \geq \frac{1}{\|S^{-1}\|}\,\|v\| - \|S - T\|\,\|v\|
+    = \left( \frac{1}{\|S^{-1}\|} - \|S - T\| \right) \|v\|.
+\]
+By hypothesis $\|S - T\| < \dfrac{1}{\|S^{-1}\|}$, so the coefficient
+on the right is strictly positive. Since $\|v\| > 0$, we conclude
+$\|Tv\| > 0$, hence $Tv \neq 0$.
+
+Therefore $T$ is injective, and thus invertible. \qedhere
 \end{solution}
 
 \end{document}

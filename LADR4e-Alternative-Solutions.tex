@@ -181,4 +181,35 @@ $\|Tv\| > 0$, hence $Tv \neq 0$.
 Therefore $T$ is injective, and thus invertible. \qedhere
 \end{solution}
 
+\begin{exercise}[7.F.14]
+Suppose $U$ and $W$ are subspaces of $V$ such that $\|P_U - P_W\| < 1$.
+Prove that $\dim U = \dim W$.
+\end{exercise}
+
+\begin{solution}
+We first show that $\dim U \leq \dim W$ by proving that the restriction
+$P_W|_U : U \to W$ is injective.
+
+Suppose $u \in U$ satisfies $P_W u = 0$. Since $u \in U$, we have
+$P_U u = u$, and therefore
+\[
+    (P_U - P_W)u = u - 0 = u.
+\]
+Taking norms gives
+\[
+    \|u\| = \|(P_U - P_W)u\| \leq \|P_U - P_W\|\, \|u\|.
+\]
+If $u \neq 0$, dividing both sides by $\|u\|$ yields
+$1 \leq \|P_U - P_W\| < 1$, a contradiction. Hence $u = 0$, and so
+$P_W|_U$ is injective.
+
+The existence of an injective linear map from $U$ into $W$ implies
+$\dim U \leq \dim W$.
+
+Interchanging the roles of $U$ and $W$, the same argument shows that
+$P_U|_W : W \to U$ is injective, hence $\dim W \leq \dim U$.
+
+Therefore $\dim U = \dim W$. \qedhere
+\end{solution}
+
 \end{document}

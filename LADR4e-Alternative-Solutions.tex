@@ -212,4 +212,72 @@ $P_U|_W : W \to U$ is injective, hence $\dim W \leq \dim U$.
 Therefore $\dim U = \dim W$. \qedhere
 \end{solution}
 
+\section*{Chapter 9.C}
+
+\begin{exercise}[9.C.19]
+Suppose $V$ is an inner product space, $e_1, \dots, e_n$ is an
+orthonormal basis of $V$, and $T \in \mathcal{L}(V)$ is a positive
+operator.
+\begin{enumerate}
+    \item[(a)] Prove that
+    $\det T \leq \prod_{k=1}^{n} \langle Te_k, e_k \rangle$.
+    \item[(b)] Prove that if $T$ is invertible, then the inequality
+    in (a) is an equality if and only if $e_k$ is an eigenvector of
+    $T$ for each $k = 1, \dots, n$.
+\end{enumerate}
+\end{exercise}
+
+\begin{solution}
+We give an alternative proof of part (b) via a chain of equivalences,
+avoiding the matrix identity $\mathcal{M}(T) = B^*B$ used in the
+standard solution. We freely use the matrix $B = \mathcal{M}(\sqrt{T})$
+with respect to $e_1, \dots, e_n$ from part (a), whose columns are
+$v_1, \dots, v_n$, and we note that since $T$ is invertible, so are
+$\sqrt{T}$ and $B$.
+
+Since the only inequality used in deriving (a) is Hadamard's
+inequality $\det B \leq \prod_{k=1}^n \|v_k\|$, equality in (a) holds
+if and only if equality holds in Hadamard's inequality. As $B$ is
+invertible, Exercise~9.C.18 shows that this is equivalent to the
+columns $v_1, \dots, v_n$ being pairwise orthogonal. We now translate
+this condition back to $T$ through the following chain of
+equivalences, where $j \neq k$ throughout:
+\[
+    \langle v_j, v_k \rangle = 0
+    \;\Longleftrightarrow\;
+    \langle \sqrt{T} e_j, \sqrt{T} e_k \rangle = 0
+    \;\Longleftrightarrow\;
+    \langle T e_j, e_k \rangle = 0.
+\]
+The first equivalence holds because $v_k$ is the coordinate vector of
+$\sqrt{T} e_k$ with respect to the orthonormal basis
+$e_1, \dots, e_n$, so that
+$\langle v_j, v_k \rangle = \langle \sqrt{T} e_j, \sqrt{T} e_k \rangle$
+(coordinates with respect to an orthonormal basis preserve inner
+products). The second equivalence holds because $\sqrt{T}$ is
+self-adjoint:
+\[
+    \langle \sqrt{T} e_j, \sqrt{T} e_k \rangle
+    = \langle (\sqrt{T})^* \sqrt{T} e_j, e_k \rangle
+    = \langle (\sqrt{T})^2 e_j, e_k \rangle
+    = \langle T e_j, e_k \rangle.
+\]
+Finally, $\langle T e_j, e_k \rangle$ is the $(k, j)$ entry of the
+matrix of $T$ with respect to $e_1, \dots, e_n$. Thus these entries
+vanish for all $j \neq k$ if and only if $\mathcal{M}(T)$ is diagonal,
+which holds if and only if each $e_k$ is an eigenvector of $T$.
+
+Combining the equivalences:
+\[
+    \text{equality in (a)}
+    \;\Longleftrightarrow\;
+    v_1, \dots, v_n \text{ pairwise orthogonal}
+    \;\Longleftrightarrow\;
+    \mathcal{M}(T) \text{ diagonal}
+    \;\Longleftrightarrow\;
+    \text{each } e_k \text{ is an eigenvector of } T.
+\]
+This proves (b) in both directions simultaneously. \qedhere
+\end{solution}
+
 \end{document}
